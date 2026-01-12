@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/hi.html" },
+    { "source": "/", "destination": "/index.html" },
     { "source": "/banners", "destination": "/banners.html" }
   ],
   "cleanUrls": true
