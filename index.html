@@ -502,7 +502,7 @@
     </div>
 
     <div class="navbar">
-        <a href="index.html" class="navbar-logo">
+        <a href="hi.html" class="navbar-logo">
             <img src="./covenanthehe.png" alt="Logo">
         </a>
         <a href="banners.html">Banners</a>
@@ -762,17 +762,6 @@
                 }
             }
         });
-
-        // Update navbar links to use clean routes supported by vercel.json
-        (function setCleanNavLinks() {
-            const links = document.querySelectorAll('.navbar a');
-            links.forEach(a => {
-                const href = a.getAttribute('href');
-                if (!href) return;
-                if (href === 'hi.html') a.setAttribute('href', '/');
-                if (href === 'banners.html') a.setAttribute('href', '/banners');
-            });
-        })();
     </script>
 </body>
 </html>
