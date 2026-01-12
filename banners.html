@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,3 +227,220 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banners - COVENANT</title>
+    <style>
+        body {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('./bj.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            padding: 12px 30px;
+            border: 1px solid #444;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 30px;
+            width: fit-content;
+            margin: 20px auto 0;
+        }
+
+        .navbar-logo {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar-logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .navbar a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            font-family: 'Arial', sans-serif;
+            transition: color 0.3s ease;
+            padding: 8px 15px;
+        }
+
+        .navbar a:hover {
+            color: #ffffff;
+        }
+
+        .navbar a.active {
+            color: #ffffff;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 6px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .logo-container img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .page-title {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 300;
+            color: #e0e0e0;
+            letter-spacing: 8px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px;
+            padding: 0 20px;
+            min-height: 400px;
+        }
+
+        .banners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .banner-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid #444;
+            border-radius: 8px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .banner-item:hover {
+            transform: translateY(-5px);
+            border-color: #e0e0e0;
+        }
+
+        .banner-item:hover .banner-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 400px;
+            z-index: 999;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .banner-item:hover .banner-image img {
+            height: 100%;
+            object-fit: contain;
+            border-radius: 13px;
+        }
+
+        .banner-image {
+            width: 100%;
+            height: 200px;
+            background: #333;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .banner-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-name {
+            color: #e0e0e0;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="hi.html" class="navbar-logo">
+            <img src="./covenanthehe.png" alt="Logo">
+        </a>
+        <a href="banners.html" class="active">Banners</a>
+    </div>
+
+    <div class="logo-container">
+        <img src="./covenanthehe.png" alt="Logo">
+    </div>
+
+    <div class="page-title">BANNERS</div>
+
+    <div class="content-container">
+        <div class="banners-grid">
+            <div class="banner-item">
+                <div class="banner-image">
+                    <img src="./nyxcove.jpg" alt="Nyx Cove">
+                </div>
+                <div class="banner-name">Jerick</div>
+            </div>
+            <div class="banner-item">
+                <div class="banner-image">
+                    <img src="./maycove.jpg" alt="May Cove">
+                </div>
+                <div class="banner-name">Leamay</div>
+            </div>
+            <div class="banner-item">
+                <div class="banner-image">
+                    <img src="./cove.png" alt="Cove">
+                </div>
+                <div class="banner-name">Cove</div>
+            </div>
+            <div class="banner-item">
+                <div class="banner-image">
+                    <img src="./newproject.png" alt="New Project">
+                </div>
+                <div class="banner-name">Cove</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+>>>>>>> 54240d8e243ce1025078420eca229cb253d3c796
