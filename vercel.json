@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/hi.html" },
+    { "source": "/banners", "destination": "/banners.html" }
+  ],
+  "cleanUrls": true
+}
