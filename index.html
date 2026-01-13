@@ -307,6 +307,47 @@
             filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.8));
         }
         
+        /* Badges Styling */
+        .badge-container {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 8px;
+        }
+
+        .nitro-badge {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .server-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .server-tag-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .username-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
         .profile-item:hover .username-tooltip {
             visibility: visible;
             opacity: 1;
@@ -777,6 +818,33 @@
                 <a href="https://discord.gg/AkfhC6Uk" target="_blank" class="join-button">Join Server</a>
             </div>
         </div>
+
+        <div class="server-card">
+            <div class="server-banner" style="background-image: url('./repent.jpg');">
+                <div class="server-logo">
+                    <img src="./rxpent.png" alt="rxpent logo">
+                </div>
+            </div>
+            <div class="server-info">
+                <p class="server-name">SOUTH REPENT</p>
+                <p class="server-description">xo.rxpent</p>
+                <a href="https://discord.gg/ZxNGZ6fduq" target="_blank" class="join-button">Join Server</a>
+            </div>
+        </div>
+
+        <div class="server-card">
+            <div class="server-banner" style="background-image: url('./hated.png');">
+                <div class="server-logo">
+                    <img src="./mxst.png" alt="mzxsthated Logo">
+                </div>
+            </div>
+            <div class="server-info">
+                <p class="server-name">MOSTHATED</p>
+                <p class="server-description">mzxsthated</p>
+                <a href="https://discord.gg/hWXsYH4vzg" target="_blank" class="join-button">Join Server</a>
+            </div>
+        </div>
+
         </div>
     </div>
 
@@ -843,7 +911,8 @@ async function fetchDiscordPresence(userId, index) {
         const { data } = await response.json();
         
         const container = document.querySelector(`[data-position="${index}"] .profile-hover-bio`);
-        const originalBio = document.querySelector(`[data-position="${index}"] .bio-text`).getAttribute('data-text');
+        const bioTextElement = container.querySelector('.bio-text');
+        const originalBio = bioTextElement ? bioTextElement.getAttribute('data-text') : "covenant member";
 
         const statusMap = {
             online: { label: 'Online', color: '#3ba55d' },
@@ -853,9 +922,12 @@ async function fetchDiscordPresence(userId, index) {
         };
         const currentStatus = statusMap[data.discord_status] || statusMap.offline;
 
+        // Simplified Header (Only Username and Bio)
         let html = `
-            <div class="bio-username">${data.discord_user.username}</div>
-            <div class="bio-text">${originalBio}</div>
+            <div class="username-row">
+                <div class="bio-username">${data.discord_user.username}</div>
+            </div>
+            <div class="bio-text">${originalBio === "null" || !originalBio ? "" : originalBio}</div>
         `;
 
         // 1. CODING / GAME ACTIVITY
@@ -886,11 +958,13 @@ async function fetchDiscordPresence(userId, index) {
         if (data.listening_to_spotify && data.spotify) {
             const s = data.spotify;
             const total = s.timestamps.end - s.timestamps.start;
-            const progress = ((Date.now() - s.timestamps.start) / total) * 100;
+            const elapsed = Date.now() - s.timestamps.start;
+            const progress = Math.min((elapsed / total) * 100, 100);
             
             const formatTime = (ms) => {
+                if (ms < 0) ms = 0;
                 const mins = Math.floor(ms / 60000);
-                const secs = ((ms % 60000) / 1000).toFixed(0);
+                const secs = Math.floor((ms % 60000) / 1000);
                 return mins + ":" + (secs < 10 ? '0' : '') + secs;
             };
 
@@ -905,13 +979,14 @@ async function fetchDiscordPresence(userId, index) {
                             <div class="spotify-progress-bar" style="width: ${progress}%"></div>
                         </div>
                         <div class="spotify-time">
-                            <span>${formatTime(Date.now() - s.timestamps.start)}</span>
+                            <span>${formatTime(elapsed)}</span>
                             <span>${formatTime(total)}</span>
                         </div>
                     </div>
                 </div>`;
         }
 
+        // Footer Status Dot
         html += `
             <div class="status-row" style="margin-top:10px; display:flex; align-items:center; gap:5px;">
                 <div class="status-indicator ${data.discord_status}" style="width:10px; height:10px; border-radius:50%;"></div>
